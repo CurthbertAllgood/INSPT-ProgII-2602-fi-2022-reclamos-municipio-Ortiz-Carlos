@@ -1,3 +1,11 @@
-com\mycompany\proyectofinal\Reclamo.class
-com\mycompany\proyectofinal\Modelo.class
+com\mycompany\proyectofinal\Modelo\CodigoPostal.class
+com\mycompany\proyectofinal\Modelo\Persona.class
+com\mycompany\proyectofinal\Modelo\Domicilio.class
+com\mycompany\proyectofinal\Modelo\Comuna.class
+com\mycompany\proyectofinal\Modelo\Conexion.class
+com\mycompany\proyectofinal\Modelo\Categoria.class
+com\mycompany\proyectofinal\Modelo\Usuario.class
+com\mycompany\proyectofinal\Modelo\Reclamo.class
+com\mycompany\proyectofinal\Modelo\Modelo.class
+com\mycompany\proyectofinal\Modelo\EstadoReclamo.class
 com\mycompany\proyectofinal\Controlador.class
