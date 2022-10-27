@@ -17,7 +17,11 @@
     <div class="card">
         <h5 class="card-header">Reclamo numero: ${reclamo.id}</h5>
         <div class="card-body">
-        <p>El estado actual de su solicitud es: ${reclamo.descripcion}</p>
+            <p>Descripcion: ${reclamo.descripcion}</p>
+        <p>Fecha de Creacion: ${reclamo.fechaCreacion}</p>
+        <p>El estado del reclamo es: ${reclamo.detalle}</p>
+        <p>Categoria: ${reclamo.categoria}</p>
+        <p>ID Persona: ${reclamo.idPersona}</p>
         <a href="#" class="btn btn-danger">Cancelar Reclamo</a>
         </div>
     </div>

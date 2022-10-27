@@ -1,61 +1,160 @@
 package com.mycompany.proyectofinal.Modelo;
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 public class Reclamo implements Serializable{
 
 	
     private int idReclamo;
+    
+    private String DescripReclamo;
+    
+    private LocalDate FCReclamo;
+    
+    private LocalDate FRReclamo;
 
-    private LocalDate fechaCreacion;
+    private Categoria CategoriaReclamo;
 
-    private LocalDate Resolucion;
+    private Domicilio Domi;
 
-    private Object Categoria;
+    private EstadoReclamo Estado;
 
-    private Object Domicilio;
+    private String DetalleResolucion;
+    
+    private Persona idPersonaReclamo;
 
-    private Object EstadoReclamo;
-
-    private String descripcion;
-
-    private String detalle;
-
-
-	public Reclamo(int idReclamo, LocalDate fechaCreacion, LocalDate Resolucion, Object Categoria, Object Domicilio, Object estadoReclamo, 
-		String descripcion, String detalle) {
-		this.idReclamo = idReclamo;
-		this.fechaCreacion = fechaCreacion;
-		this.Resolucion = Resolucion;
-		this.Categoria = Categoria;
-		this.Domicilio = Domicilio;
-		this.EstadoReclamo = estadoReclamo;
-		this.descripcion = descripcion;
-		this.detalle = detalle;
-	}
-
-	
-	public Reclamo(String descripcion, int idReclamo) {
-		this.descripcion = descripcion;
-		this.idReclamo = idReclamo;
-	}
 	
 	public Reclamo(){
 		
 	}
 
-	Reclamo(int id, String descripcion, String fechaCreacion, String fechaResolucion, String resolucion, String categoria, int idPersona, int idDomicilio) {
-		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+	public Reclamo(int id, String descripcion, LocalDate fechaCreacion, LocalDate fechaResolucion, Categoria categoria, Domicilio domicilio, EstadoReclamo estado, String detalle, Persona idPersona){
+	idReclamo=id;
+	DescripReclamo=descripcion;
+	FCReclamo=fechaCreacion;
+	FRReclamo=fechaResolucion;
+	Domi=domicilio;
+	DetalleResolucion=detalle;
+	CategoriaReclamo=categoria;
+	Estado=estado;
+	idPersonaReclamo=idPersona;
+	
 	}
 
-	public float getId(){
+	public	Reclamo(int id, String descripcion, String fechaCreacion, String detalle, String categoria, int idPersona) {
+		setId(id);
+		setDescripcion(descripcion);
+		setFechaCreacion(fechaCreacion);
+		
+		setDetalleResolucion(detalle);
+		setCategoria(CategoriaReclamo);
+		setPersona(idPersona);
+		
+	}
+
+	//Getters 
+	
+	public int getId(){
 		return idReclamo;
 	}
 	
 	public String getDescripcion(){
-		return descripcion;
+		return DescripReclamo;
 	}
 	
+	public LocalDate getFechaCreacion(){
+		return FCReclamo;
+	}
+	
+	public LocalDate getFechaResolucion(){
+		return FRReclamo;
+	}
+	
+	public Categoria getCategoria(){
+		Categoria categoria = null;
+		return categoria;
+	}
+	
+	public Domicilio getDomicilio(){
+		Domicilio dom=null;
+		return dom;
+	}
+	
+	
+	public EstadoReclamo getEstadoReclamo(){
+		EstadoReclamo er=null;
+		return er;
+	}
+	
+	public String getDetalle(){
+		return DetalleResolucion;
+	}
+	public Persona getIdPersona(){
+		return idPersonaReclamo;
+	}
+	
+	// INICIO SETTERS
+	
+	//Set Id Reclamo
+	
+	public void setId(int id){
+		if(id<0){
+			throw new RuntimeException("Valor de ID incorrecto");
+		}
+		this.idReclamo=id;
+	}
+
+	//Set Descripcion de reclamo
+
+	public void setDescripcion(String Descripcion) {
+		
+		DescripReclamo=Descripcion;
+		
+	}
+
+	public void setFechaResolucion(String fechaResolucion) {
+		try{
+		LocalDate fechaFinal= LocalDate.parse(fechaResolucion);
+			this.FRReclamo = fechaFinal;
+		}catch(DateTimeParseException ex){
+		}
+	}
+	
+	
+	
+
+	public void setFechaCreacion(String fechaCreacion) {
+		try{
+		LocalDate fechaFinal= LocalDate.parse(fechaCreacion);
+		this.FCReclamo = fechaFinal;
+		}catch(DateTimeParseException ex){
+			throw new RuntimeException("La fecha de reclamo no es válida", ex);
+		}
+	}
+	
+	public void setDetalleResolucion(String detalle) {
+
+		DetalleResolucion=detalle;
+	}
+
+	public void setCategoria(Categoria CategoriaReclamo) {
+		this.CategoriaReclamo=null;
+	}
+
+	public void setPersona(int idPersona) {
+		idPersonaReclamo=null;
+	}
+
+
+
+@Override
+	public String toString() {
+		return "Reclamo{" + "idReclamo=" + idReclamo +   ", descripcion=" + DescripReclamo + ", fechaCreacion=" + FCReclamo  + ", fechaResolucion=" + FRReclamo + ", Categoria=" + CategoriaReclamo + ", Domicilio=" + Domi + ", EstadoReclamo=" + Estado + ", detalle=" + DetalleResolucion + ", idPersona=" + idPersonaReclamo + '}';
+	}	
 	
 }

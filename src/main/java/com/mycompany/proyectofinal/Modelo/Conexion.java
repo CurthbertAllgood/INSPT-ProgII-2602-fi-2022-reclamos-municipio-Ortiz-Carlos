@@ -6,6 +6,7 @@ package com.mycompany.proyectofinal.Modelo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  *
@@ -16,7 +17,7 @@ public class Conexion {
 	private static Connection con=null;
 	private static String user="root";
 	private static String pass="Prisma01";
-	private static String url="jdbc:mysql://localhost:3306/municipio_ortiz_carlos";
+	private static String url="jdbc:mysql://localhost:3306/municipio_ortiz_carlos?allowPublicKeyRetrieval=true&useSSL=false";
 	private static String driver="com.mysql.cj.jdbc.Driver";
 	
 	
@@ -31,7 +32,8 @@ public class Conexion {
 			catch(ClassNotFoundException ex){
 				throw new RuntimeException("no se encuentra el driver"+driver, ex);
 			}
-			catch(Exception ex){
+			catch(SQLException ex){
+				System.out.println("salio error"+ex);
 				throw new RuntimeException("no se pudo establecer la conexion con la bd", ex);
 			}
 		}
