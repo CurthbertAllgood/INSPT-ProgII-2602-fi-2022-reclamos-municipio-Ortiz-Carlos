@@ -19,7 +19,7 @@
         <div class="card-body">
             <p>Descripcion: ${reclamo.descripcion}</p>
         <p>Fecha de Creacion: ${reclamo.fechaCreacion}</p>
-        <p>El estado del reclamo es: ${reclamo.detalle}</p>
+        <p>La resolucion del reclamo es: ${reclamo.detalle}</p>
         <p>Categoria: ${reclamo.categoria}</p>
         <p>ID Persona: ${reclamo.idPersona}</p>
         <a href="#" class="btn btn-danger">Cancelar Reclamo</a>
