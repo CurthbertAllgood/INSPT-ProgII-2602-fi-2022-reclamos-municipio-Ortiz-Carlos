@@ -104,18 +104,18 @@ public class Reclamo implements Serializable{
 	
 	//Set Id Reclamo FUNCIONA
 	
-	public void setId(Long id){
+	public long setId(Long id){
 		if(id<0){
 			throw new RuntimeException("Valor de ID incorrecto");
 		}
-		this.idReclamo=id;
+		return	this.idReclamo=id;
 	}
 
 	//Set Descripcion de reclamo FUNCIONA
 
-	public void setDescripcion(String Descripcion) {
+	public String setDescripcion(String Descripcion) {
 		
-		this.DescripReclamo=Descripcion;
+		return this.DescripReclamo=Descripcion;
 		
 	}
 
@@ -161,6 +161,10 @@ public class Reclamo implements Serializable{
 	public void setPersona(Long idPersona) {
 		Long persona=idPersona;
 	}
+
+
+
+
 }
 	
 		

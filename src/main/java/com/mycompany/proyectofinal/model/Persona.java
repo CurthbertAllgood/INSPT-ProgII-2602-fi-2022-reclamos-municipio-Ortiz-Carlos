@@ -2,8 +2,10 @@ package com.mycompany.proyectofinal.model;
 
 import java.util.List;
 
-public class Persona {
-
+public abstract class Persona {
+	
+    private String rol;
+    
     private int PersonaId;
     
     private String nombre;
@@ -30,20 +32,36 @@ public class Persona {
 		setEmail(email);
 		setTelefono(telefono);
 	}
+
+	Persona() {
+		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+	}
     
+	
+    public String getRol() {
+    	return rol;
+    }
+
+    public void setRol(String rol) {
+    	this.rol = rol;
+    }
     
-    public int getIdPersona(){
+    public int get(){
 	    return PersonaId;
     }
+   
+    public void add() {
+    }
+
+    public void remove() {
+    }
+
+    public void update() {
+    }
     
-    public void generaReclamo() {
-    }
-
-    public void cancelaReclamo() {
-    }
-
-    public void modificaReclamo() {
-    }
+    public List<Persona> getList(){
+	    return null;
+	}
 
 	private void setid(int id) {
 		if(id<0){

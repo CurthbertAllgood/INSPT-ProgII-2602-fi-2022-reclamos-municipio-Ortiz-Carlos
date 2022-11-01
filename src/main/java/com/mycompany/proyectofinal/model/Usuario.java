@@ -1,21 +1,13 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package com.mycompany.proyectofinal.model;
 
+/**
+ *
+ * @author VGRCAORT
+ */
 public class Usuario {
-
-    private Long idUsuario;
-
-    private String password;
-
-    private boolean rol;
-    
-    private Long idPersona;
-
-    public void altaUsuario() {
-    }
-
-    public void bajaUsuario() {
-    }
-
-    public void modificaUsuario() {
-    }
+	
 }
