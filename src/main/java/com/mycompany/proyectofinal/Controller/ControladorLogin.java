@@ -58,7 +58,9 @@ public class ControladorLogin extends HttpServlet {
 			String password = request.getParameter("password");
 			UsuarioDAO m= new UsuarioDAO();
 			p=m.autenticar(userId, password);
-			System.out.println(p);
+			
+			//Devuelve un objeto vacio, entonces salta al sqlException
+			
 			if(p!=null){
 				String haciaDondeIba = request.getParameter("deDondeViene");
 				HttpSession session = request.getSession();
