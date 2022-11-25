@@ -35,7 +35,7 @@ public class ModeloReclamo implements Modelo<ReclamoDTO>{
             }
 	
         } catch (SQLException ex) {
-            throw new RuntimeException("Error al obtener carreras", ex);
+            throw new RuntimeException("Error al obtener ", ex);
         }
 	
         return listaReclamo;
