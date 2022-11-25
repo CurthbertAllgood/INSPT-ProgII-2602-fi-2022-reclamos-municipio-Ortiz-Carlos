@@ -2,7 +2,7 @@
 package com.mycompany.proyectofinal.model;
 
 import java.util.List;
-public interface Modelo<T, C> {
+public interface Modelo<T> {
     /**
      * Devuelve una lista de alumnos existentes
      * @return 
@@ -36,4 +36,5 @@ public interface Modelo<T, C> {
      * @return La cantidad de registros modificados
      */
     public int remove(int C);
+
 }

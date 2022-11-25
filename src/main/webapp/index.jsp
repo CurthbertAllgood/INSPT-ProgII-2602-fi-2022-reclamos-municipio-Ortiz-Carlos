@@ -25,7 +25,7 @@
                 <p>Si necesitas generar un reclamo de inmueble, ya sea podado de arbustos, limpieza de vereda, levantamiento de escombros, 
                     alumbrado, etc. 
                     Ingresa y hacenos saber cual es tu necesidad</p>
-                <a href="./pages/registros.html" class="btn btn-primary">Generar Reclamo</a>
+                <a href="${pageContext.request.contextPath}/login" class="btn btn-primary">Generar Reclamo</a>
                 </div>
             </div>
             <div>
@@ -36,7 +36,7 @@
                 <div>
                 <h5 class="mt-0">Mira el estado de tus reclamos</h5>
                 <p>Si necesitas conocer el estado del reclamo, podes verificar el mismo desde tu propia casa a través de la siguiente opcion</p>
-                <a href="reclamos" class="btn btn-primary">Ver tus Reclamos</a>
+                <a href="${pageContext.request.contextPath}/reclamos" class="btn btn-primary">Ver tus Reclamos</a>
                 </div>
             
         </div>

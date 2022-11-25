@@ -1,5 +1,6 @@
 
 package com.mycompany.proyectofinal.model;
+import com.mycompany.proyectofinal.DTO.ReclamoDTO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +13,7 @@ import java.util.logging.Logger;
 import javax.accessibility.AccessibleRole;
 import static jdk.internal.org.jline.utils.Colors.s;
 
-public class ModeloReclamo implements Modelo<Reclamo, Long>{
+public class ModeloReclamo implements Modelo<ReclamoDTO>{
 	final private String GET_ALL="SELECT * FROM Reclamo";
 	final private String ADD_RECLAMO="INSERT INTO reclamo VALUES(null, ?,?,?,?,?,?,?)";
 	private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -22,31 +23,32 @@ public class ModeloReclamo implements Modelo<Reclamo, Long>{
 	private Conexion generaConexion;
 	
 	@Override
-	public List<Reclamo> getList()  {
-        List<Reclamo> listaReclamo = new ArrayList<>();
+	public List<ReclamoDTO> getList()  {
+        List<ReclamoDTO> listaReclamo = new ArrayList<>();
         try {
             Connection con = Conexion.getConexion(DRIVER, URL, USER, PASS);
-            
             PreparedStatement ps = con.prepareStatement(GET_ALL);
             ResultSet rs = ps.executeQuery();
-            
+	    
             while (rs.next()) {
 		  listaReclamo.add(rsReclamo(rs));
             }
+	
         } catch (SQLException ex) {
             throw new RuntimeException("Error al obtener carreras", ex);
         }
+	
         return listaReclamo;
     }
 	
 
 	@Override
-	public Reclamo get(int id) {
+	public ReclamoDTO get(int id) {
 		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 
 	@Override
-	public int add(Reclamo reclamo) {
+	public int add(ReclamoDTO reclamo) {
 		int regsAgregados=0;
 		try(Connection con= generaConexion.getConexion(DRIVER, URL, USER, PASS);PreparedStatement ps= con.prepareStatement(ADD_RECLAMO)){
 			generaReclamo(ps, reclamo);
@@ -62,7 +64,7 @@ public class ModeloReclamo implements Modelo<Reclamo, Long>{
 	}
 
 	@Override
-	public int update(Reclamo reclamo) {
+	public int update(ReclamoDTO reclamo) {
 		throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
 	}
 
@@ -73,10 +75,10 @@ public class ModeloReclamo implements Modelo<Reclamo, Long>{
 
 
 
-//Generadores de objeto Reclamo
+//Generadores de objeto ReclamoDTO
 
 	//addReclamo	
-	public void generaReclamo(PreparedStatement ps, Reclamo rec)throws SQLException{
+	public void generaReclamo(PreparedStatement ps, ReclamoDTO rec)throws SQLException{
 		ps.setLong(1, rec.getId());
 		ps.setString(2, rec.getDescripcion());
 		ps.setDate(3, rec.getFechaCreacion());
@@ -89,7 +91,7 @@ public class ModeloReclamo implements Modelo<Reclamo, Long>{
 	}
 	
 	//getList y getReclamo
-	private Reclamo rsReclamo(ResultSet rs) throws SQLException{
+	private ReclamoDTO rsReclamo(ResultSet rs) throws SQLException{
 	Long id= rs.getLong("id_Reclamo");
 	System.out.println("nuevo id"+id);
 	String fechaCreacion= rs.getString("Fecha_Creacion");
@@ -104,7 +106,7 @@ public class ModeloReclamo implements Modelo<Reclamo, Long>{
 	System.out.println(categoria);
 	Long idPersona=rs.getLong("id_Persona");// falta adaptar el setPersona
 	System.out.println(idPersona);
-	return new Reclamo(id, descripcion, fechaCreacion, /*fechaResolucion,*/ detalle, categoria, idPersona);
+	return new ReclamoDTO(id, descripcion, fechaCreacion, /*fechaResolucion,*/ detalle, categoria, idPersona);
 	}
 
 
