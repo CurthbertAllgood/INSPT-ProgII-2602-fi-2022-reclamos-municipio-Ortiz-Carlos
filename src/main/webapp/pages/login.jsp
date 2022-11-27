@@ -24,14 +24,14 @@
     <form action="${pageContext.request.contextPath}/login" method="post">
         <!--input Email-->
         <div class="form-group">
-            <label class="form-label" for="user">Usuario</label>
-            <input class="form-control" type="text" id="user" name="user">
+            <label class="form-label"type="user" id="user"for="">Usuario</label>
+            <input class="form-control" type="user" id="user">
         </div>
         
         <!--input Password-->
         <div class="form-group">
             <label class="form-label" for="password">Contraseña</label>
-            <input class="form-control"  type="password" id="password" name="password">
+            <input class="form-control" type="password" id="password">
         </div>
         
         <!--Boton de recuerdame-->

@@ -1,40 +1,42 @@
 
 package com.mycompany.proyectofinal.Controller;
-import com.mycompany.proyectofinal.model.DTO.ReclamoDTO;
-import com.mycompany.proyectofinal.modelo.Conexion;
-import com.mycompany.proyectofinal.modelo.PersonaDAO;
-import com.mycompany.proyectofinal.modelo.ModeloReclamo;
-import com.mycompany.proyectofinal.modelo.PersonaFactory;
+import com.mycompany.proyectofinal.DTO.PersonaDTO;
+import com.mycompany.proyectofinal.DTO.ReclamoDTO;
+import com.mycompany.proyectofinal.model.Modelo;
+import com.mycompany.proyectofinal.model.Conexion;
+import com.mycompany.proyectofinal.model.ModeloReclamo;
+import com.mycompany.proyectofinal.model.PersonaFactory;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import jakarta.servlet.http.HttpSession;
 //DoGet y DoPost es un pasador de datos, no tiene logica
 
 // Servlet Para mostrar y generar Reclamos
 @WebServlet(name = "ReclamoServlet", urlPatterns = {"/reclamos"})
 public class ControladorReclamosDomicilio extends HttpServlet {
 	
+	private Modelo model;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
-			
+		
 			HttpSession session = request.getSession();
-			PersonaDAO m = (PersonaDAO) session.getAttribute("userLogueado");
+			PersonaDTO m = (PersonaDTO) session.getAttribute("userLogueado");
 			System.out.println(m);
-			request.setAttribute("listaReclamos", m.getList());
+			request.setAttribute("listaReclamos", model.getList());
 			request.getRequestDispatcher("/pages/reclamos.jsp").forward(request, response);
-	}
+		}
 	
 	
 	
@@ -50,9 +52,17 @@ public class ControladorReclamosDomicilio extends HttpServlet {
 		return "Short description";
 	}
 	
-
+	@Override
+	public void init() throws ServletException {
+        
+	this.model=getModelo();
+	
+	}
     
     
-
+	private Modelo getModelo() throws ServletException{
+		Modelo m= new ModeloReclamo();
+		return m; 
+	}
 	
 }

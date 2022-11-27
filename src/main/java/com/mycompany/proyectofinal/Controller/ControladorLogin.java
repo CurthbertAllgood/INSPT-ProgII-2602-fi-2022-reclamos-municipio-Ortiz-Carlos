@@ -9,9 +9,9 @@
 
 package com.mycompany.proyectofinal.Controller;
 
-import com.mycompany.proyectofinal.modelo.UsuarioDAO;
-import com.mycompany.proyectofinal.modelo.PersonaDAO;
-import com.mycompany.proyectofinal.model.DTO.UsuarioDTO;
+import com.mycompany.proyectofinal.model.UsuarioDAO;
+import com.mycompany.proyectofinal.DTO.PersonaDTO;
+import com.mycompany.proyectofinal.DTO.UsuarioDTO;
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
@@ -37,7 +37,7 @@ public class ControladorLogin extends HttpServlet {
 	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
-	private PersonaDAO p= null;
+	private PersonaDTO p= null;
 
 
 
@@ -55,29 +55,24 @@ public class ControladorLogin extends HttpServlet {
 		throws ServletException, IOException {
 		try {
 			String userId  = request.getParameter("user");
-			System.out.println(userId);
 			String password = request.getParameter("password");
-			System.out.println(password);
 			UsuarioDAO m= new UsuarioDAO();
 			p=m.autenticar(userId, password);
 			
 			//Devuelve un objeto vacio, entonces salta al sqlException
-			System.out.println(p);
+			
 			if(p!=null){
-				
 				String haciaDondeIba = request.getParameter("deDondeViene");
-				request.getParameter(p.getRol());
 				HttpSession session = request.getSession();
 				session.setMaxInactiveInterval(10);
 				session.setAttribute("userLogueado", p);
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
 			}
-				else{
+			else{
 				
 				request.setAttribute("hayError", true);
 				request.setAttribute("mensajeError", "Credenciales incorrectas!");
 				doGet(request, response);
-				}
+			}
 		} catch (ClassNotFoundException ex) {
 			throw new RuntimeException("no se genero el objeto", ex);
 		} catch (SQLException ex) {
