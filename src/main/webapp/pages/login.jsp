@@ -25,13 +25,13 @@
         <!--input Email-->
         <div class="form-group">
             <label class="form-label"type="user" id="user"for="">Usuario</label>
-            <input class="form-control" type="user" id="user">
+            <input class="form-control" type="user" id="user" name="user">
         </div>
         
         <!--input Password-->
         <div class="form-group">
             <label class="form-label" for="password">Contraseña</label>
-            <input class="form-control" type="password" id="password">
+            <input class="form-control" type="password" name="password">
         </div>
         
         <!--Boton de recuerdame-->
